@@ -16,7 +16,7 @@ class ItemController extends Controller
     {
         $items = Item::where('name', 'like', '%' . $key . '%')
             ->orWhere('price', 'like', '%' . $key . '%')
-            ->orWhere('price', 'like', '%' . $key . '%')
+            ->orWhere('id', 'like', '%' . $key . '%')
             ->orWhereHas('seller', function ($query) use ($key) {
                 $query->where('ip_address', 'like', '%' . $key . '%');
             })

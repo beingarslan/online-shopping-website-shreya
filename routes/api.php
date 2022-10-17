@@ -20,9 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// item list web service
 Route::get('/{seller_id}/items', [ItemController::class, 'sellerItems'])->name('seller_items');
+
+// search for online items
 Route::get('/search/items/{key}', [ItemController::class, 'searchItems']);
+
+// purchase an online item
 Route::post('/purchase/items', [ItemController::class, 'purchaseItems']);
 
 // search purchase
@@ -35,4 +39,4 @@ Route::delete('/cancel/purchase/{purchase_id}', [PurchaseController::class, 'can
 Route::post('/add/balance', [PurchaseController::class, 'addBalance']);
 
 // card check
-Route::post('/card/check', [CardController::class, 'cardCheck']);
+Route::post('/card/check', [CardController::class, 'checkCard']);
